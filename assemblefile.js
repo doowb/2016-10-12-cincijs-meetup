@@ -43,23 +43,23 @@ app.task('build', ['load', 'copy'], function() {
 app.task('copy', ['copy-*']);
 
 app.task('copy-css', function() {
-  return app.copy(['vendor/reveal.js-3.3.0/css/**/*', 'src/styles/**/*'], '_gh_pages/css');
+  return app.copy(['node_modules/reveal.js/css/**/*', 'src/styles/**/*'], '_gh_pages/css');
 });
 
 app.task('copy-js', function() {
-  return app.copy('vendor/reveal.js-3.3.0/js/**/*', '_gh_pages/js');
+  return app.copy('node_modules/reveal.js/js/**/*', '_gh_pages/js');
 });
 
 app.task('copy-lib', function() {
-  return app.copy('vendor/reveal.js-3.3.0/lib/**/*', '_gh_pages/lib');
+  return app.copy('node_modules/reveal.js/lib/**/*', '_gh_pages/lib');
 });
 
 app.task('copy-img', function() {
-  return app.copy(['vendor/{twitter,github}/**/*', 'src/img/**/*'], '_gh_pages/img');
+  return app.copy('src/img/**/*', '_gh_pages/img');
 });
 
 app.task('copy-plugin', function() {
-  return app.copy('vendor/reveal.js-3.3.0/plugin/**/*', '_gh_pages/js/plugin');
+  return app.copy('node_modules/reveal.js/plugin/**/*', '_gh_pages/js/plugin');
 });
 
 app.task('serve', function() {
