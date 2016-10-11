@@ -1,0 +1,18 @@
+.slides .intro > a > img,span {
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 0;
+}
+
+.slides .footer {
+  position: absolute;
+  bottom: 0.5em;
+  left: -30%;
+  font-size: 0.4em;
+}
+
+.slides .footer .logo {
+  margin-left: -70%;
+  margin-bottom: 5px;
+}
