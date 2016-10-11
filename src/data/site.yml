@@ -1,7 +1,7 @@
 slides:
-  - outline
+  - agenda
   - introduction
-  - history
+  - what-is-serverless
   - not-going-to-discuss
   - static-sites
   - dynamic-content
