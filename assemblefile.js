@@ -3,10 +3,12 @@
 var path = require('path');
 var browserSync = require( 'browser-sync' ).create();
 var helpers = require('handlebars-helpers');
+var ghPages = require('gulp-gh-pages');
 var extname = require('gulp-extname');
 var assemble = require('assemble');
 var watch = require('base-watch');
 var yaml = require('js-yaml');
+var del = require('delete');
 var app = assemble();
 app.use(watch());
 
@@ -61,6 +63,16 @@ app.task('copy-img', function() {
 app.task('copy-plugin', function() {
   return app.copy('node_modules/reveal.js/plugin/**/*', '_gh_pages/js/plugin');
 });
+
+app.task('cleanPublish', function(cb) {
+  del('./.publish', {force: true}, cb);
+});
+
+app.task('push', function() {
+  return app.src('_gh_pages/**/*')
+    .pipe(ghPages());
+});
+app.task('deploy', app.series(['push', 'cleanPublish']));
 
 app.task('serve', function() {
   browserSync.init({
