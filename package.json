@@ -49,9 +49,30 @@
     "browser-sync": "^2.17.2",
     "delete": "^0.3.2",
     "gulp-extname": "^0.2.2",
+    "gulp-format-md": "^0.1.11",
     "gulp-gh-pages": "^0.5.4",
     "handlebars-helpers": "^0.7.5",
     "js-yaml": "^3.6.1",
     "reveal.js": "^3.3.0"
+  },
+  "verb": {
+    "toc": false,
+    "layout": "none",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "related": {
+      "list": []
+    },
+    "reflinks": [
+      "assemble",
+      "browser-sync"
+    ]
   }
 }
