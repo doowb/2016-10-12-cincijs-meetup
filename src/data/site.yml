@@ -1,4 +1,5 @@
 slides:
+  - start
   - agenda
   - introduction
   - what-is-serverless
@@ -8,4 +9,5 @@ slides:
   - hosting
   - building
   - alternatives
+  - resources
   - questions
