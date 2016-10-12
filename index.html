@@ -1,0 +1,510 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/site.css">
+  </head>
+  <body>
+    <div class="reveal">
+  <div class="slides">
+      <section data-markdown>
+  <script type="text/template">
+    # Agenda
+
+- Who am I? <!-- .element: class="fragment" data-fragment-index="1" -->
+- What does "Serverless" mean? <!-- .element: class="fragment" data-fragment-index="2" -->
+- What I won't be talking about. <!-- .element: class="fragment" data-fragment-index="3" -->
+- Building static sites (the markup part). <!-- .element: class="fragment" data-fragment-index="4" -->
+- Adding dynamic data and content (the JavaScript and APIs parts). <!-- .element: class="fragment" data-fragment-index="5" -->
+- Where to host? <!-- .element: class="fragment" data-fragment-index="6" -->
+- How to use Continuous Deployment? <!-- .element: class="fragment" data-fragment-index="7" -->
+- Are there other options? <!-- .element: class="fragment" data-fragment-index="8" -->
+- Questions? <!-- .element: class="fragment" data-fragment-index="9" -->
+
+  </script>
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    # Who am I?
+
+<img src="https://avatars.githubusercontent.com/u/995160?v=3" width="25%">
+
+> Brian Woodward
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Sellside, Inc
+
+- Co-founder with [Jon Schlinkert](https://github.com/jonschlinkert)
+- Chief Software Architect
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Open source projects
+
+<ul>
+<li>~400 public repositories on [Github](https://github.com/doowb)</li><!-- .element: class="fragment" data-fragment-index="1" -->
+<li>~700 published [NPM modules](https://npmjs.org/~doowb) with [> 220 million monthly downloads](http://www.npm-stats.com/doowb)</li><!-- .element: class="fragment" data-fragment-index="2" -->
+<li> <a href="https://github.com/assemble/assemble">
+    <img height="32" width="32" src="img/assemble-logo.png" style="border: none; vertical-align: middle;">
+    <span style="vertical-align: middle;">assemble</span>
+  </a></li><!-- .element: class="fragment" data-fragment-index="3" -->
+<li> <a href="https://github.com/generate/generate">
+    <img height="32" width="32" src="img/generate-logo.png" style="border: none; vertical-align: middle;">
+    <span style="vertical-align: middle;">generate</span>
+  </a></li><!-- .element: class="fragment" data-fragment-index="4" -->
+<li> <a href="https://github.com/update/update">
+    <img height="32" width="32" src="img/update-logo.png" style="border: none; vertical-align: middle;">
+    <span style="vertical-align: middle;">update</span>
+  </a></li><!-- .element: class="fragment" data-fragment-index="5" -->
+<li> <a href="https://github.com/verbose/verb">
+    <img height="32" width="32" src="img/verb-logo.png" style="border: none; vertical-align: middle;">
+    <span style="vertical-align: middle;">verb</span>
+  </a></li><!-- .element: class="fragment" data-fragment-index="6" -->
+<li> <a href="https://github.com/node-base/base">
+    <img height="32" width="32" src="img/base-logo.png" style="border: none; vertical-align: middle;">
+    <span style="vertical-align: middle;">base</span>
+  </a></li><!-- .element: class="fragment" data-fragment-index="7" -->
+</ul>
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Around the internet
+<ul class="intro">
+  <li>
+    <a href="https://github.com/doowb">
+      <img src="img/github.png" width="64px">
+      <span>@doowb</span>
+    </a>
+  </li><!-- .element: class="fragment" data-fragment-index="1" -->
+  <li>
+    <a href="https://twitter.com/doowb">
+      <img src="img/twitter.svg" width="64px">
+      <span>@doowb</span>
+    </a>
+  </li><!-- .element: class="fragment" data-fragment-index="2" -->
+</ul>
+
+  </script>
+</section>
+
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    # What is serverless?
+
+<img src="img/neo.jpg" width="50%"> <!-- .element: class="fragment" data-fragment-index="1" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    That's not true.
+
+There are servers... <!-- .element: class="fragment" data-fragment-index="1" -->
+
+...but (as a developer) they aren't yours <!-- .element: class="fragment" data-fragment-index="2" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    ## Create Markup
+
+Designers and developers may use whatever they choose.  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+<ul>
+  <li>
+    <span>Structure: </span><!-- .element: class="fragment" data-fragment-index="2" -->
+    <span>HTML</span><!-- .element: class="fragment" data-fragment-index="3" -->
+    <span>/ markdown</span><!-- .element: class="fragment" data-fragment-index="4" -->
+  </li><!-- .element: class="fragment" data-fragment-index="2" -->
+  <li>
+    <span>Styles: </span><!-- .element: class="fragment" data-fragment-index="5" -->
+    <span>CSS</span><!-- .element: class="fragment" data-fragment-index="6" -->
+    <span>/ LESS</span><!-- .element: class="fragment" data-fragment-index="7" -->
+    <span>/ SASS</span><!-- .element: class="fragment" data-fragment-index="8" -->
+  </li><!-- .element: class="fragment" data-fragment-index="5" -->
+  <li>
+    <span>Frameworks: </span><!-- .element: class="fragment" data-fragment-index="9" -->
+    <span>Angular</span><!-- .element: class="fragment" data-fragment-index="10" -->
+    <span>/ React</span><!-- .element: class="fragment" data-fragment-index="11" -->
+    <span>/ Ember</span><!-- .element: class="fragment" data-fragment-index="12" -->
+  </li><!-- .element: class="fragment" data-fragment-index="9" -->
+  <li>
+    <span>Libraries: </span><!-- .element: class="fragment" data-fragment-index="13" -->
+    <span>Bootstrap</span><!-- .element: class="fragment" data-fragment-index="14" -->
+    <span>/ Foundation</span><!-- .element: class="fragment" data-fragment-index="15" -->
+    <span>/ jQuery</span><!-- .element: class="fragment" data-fragment-index="16" -->
+  </li><!-- .element: class="fragment" data-fragment-index="13" -->
+  <li>
+    <span>Task Runners: </span><!-- .element: class="fragment" data-fragment-index="17" -->
+    <span>Grunt</span><!-- .element: class="fragment" data-fragment-index="18" -->
+    <span>/ Gulp</span><!-- .element: class="fragment" data-fragment-index="19" -->
+  </li><!-- .element: class="fragment" data-fragment-index="17" -->
+  <li>
+    <span>Assemble ;)</span>
+  </li><!-- .element: class="fragment" data-fragment-index="20" -->
+</ul>
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    ## Connect to APIs
+
+Add dynamic data and content from third-party APIs.  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+<ul>
+<li>
+  <span>Data: </span><!-- .element: class="fragment" data-fragment-index="2" -->
+  <span>Github</span><!-- .element: class="fragment" data-fragment-index="3" -->
+  <span>/ Firebase</span><!-- .element: class="fragment" data-fragment-index="4" -->
+</li><!-- .element: class="fragment" data-fragment-index="2" -->
+<li>
+  <span>Content: </span><!-- .element: class="fragment" data-fragment-index="5" -->
+  <span>Contentful</span><!-- .element: class="fragment" data-fragment-index="6" -->
+  <span>/ WordPress</span><!-- .element: class="fragment" data-fragment-index="7" -->
+</li><!-- .element: class="fragment" data-fragment-index="5" -->
+<li>
+  <span>Authentication: </span><!-- .element: class="fragment" data-fragment-index="8" -->
+  <span>Github</span><!-- .element: class="fragment" data-fragment-index="9" -->
+  <span>/ Google</span><!-- .element: class="fragment" data-fragment-index="10" -->
+  <span>/ Twitter</span><!-- .element: class="fragment" data-fragment-index="11" -->
+  <span>/ Facebook</span><!-- .element: class="fragment" data-fragment-index="12" -->
+  <span>/ Firebase</span><!-- .element: class="fragment" data-fragment-index="13" -->
+  <span>/ Auth0</span><!-- .element: class="fragment" data-fragment-index="14" -->
+</li><!-- .element: class="fragment" data-fragment-index="8" -->
+</ul>
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    ## Write functions
+
+Add custom functionality by writing functions.  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+- AWS Lambda <!-- .element: class="fragment" data-fragment-index="2" -->
+- Auth0 Webtasks <!-- .element: class="fragment" data-fragment-index="3" -->
+- Google Cloud Functions <!-- .element: class="fragment" data-fragment-index="4" -->
+
+  </script>
+</section>
+
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    ## What I won't be talking about today
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    ## Scopes
+
+<small>Angular</small>
+
+<img src="img/scopes.jpg" width="75%">
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    ## Data Binding
+
+<small>Angular / React / Ember</small>
+
+<img src="img/data-binding.jpg" width="75%">
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    ## Flux
+
+<small>React / Redux</small>
+
+<img src="img/flux.jpg" width="75%">
+
+  </script>
+</section>
+
+    <section>
+  <div>
+  <h2>Client side frameworks</h2>
+  <small>What I won't be talking about today</small>
+  <div style="position: absolute;">
+    <img src="img/scopes.jpg" height="25%">
+    <p>Scopes</p>
+  </div>
+  <div style="position: absolute; left: 34%;">
+    <img src="img/data-binding.jpg" height="25%">
+    <p>Data Binding</p>
+  </div>
+  <div style="position: absolute; left: 64%;">
+    <img src="img/flux.jpg" height="25%">
+    <p>Flux</p>
+  </div>
+</div>
+
+</section>
+
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    # Static sites
+
+- Provides HTML structure <!-- .element: class="fragment" data-fragment-index="1" -->
+- Pre-rendered <!-- .element: class="fragment" data-fragment-index="2" -->
+- Simple hosting <!-- .element: class="fragment" data-fragment-index="3" -->
+- Deliver through CDNs <!-- .element: class="fragment" data-fragment-index="4" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Examples
+
+- Landing pages <!-- .element: class="fragment" data-fragment-index="1" -->
+- Profiles <!-- .element: class="fragment" data-fragment-index="2" -->
+- Portfolios <!-- .element: class="fragment" data-fragment-index="3" -->
+- Web forms <!-- .element: class="fragment" data-fragment-index="4" -->
+- Style guides <!-- .element: class="fragment" data-fragment-index="5" -->
+- Mockups / Demos <!-- .element: class="fragment" data-fragment-index="6" -->
+- Layouts / Structure <!-- .element: class="fragment" data-fragment-index="7" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Demo
+
+> Generating a slack invitation page.
+
+  </script>
+</section>
+
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    # Dynamic Content
+
+- Data from third-party APIs <!-- .element: class="fragment" data-fragment-index="1" -->
+- Custom functions <!-- .element: class="fragment" data-fragment-index="2" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Examples
+
+- Github star count <!-- .element: class="fragment" data-fragment-index="1" -->
+- NPM downloads <!-- .element: class="fragment" data-fragment-index="2" -->
+- Slack users <!-- .element: class="fragment" data-fragment-index="3" -->
+- Web forms <!-- .element: class="fragment" data-fragment-index="4" -->
+- User social profiles <!-- .element: class="fragment" data-fragment-index="5" -->
+- Firebase Realtime database <!-- .element: class="fragment" data-fragment-index="6" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Demo
+
+> Displaying users in slack on the invitation page.
+
+  </script>
+</section>
+
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    # Hosting
+
+- Static files <!-- .element: class="fragment" data-fragment-index="1" -->
+- Data <!-- .element: class="fragment" data-fragment-index="2" -->
+- Custom functions <!-- .element: class="fragment" data-fragment-index="3" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Examples
+
+- Github Pages <!-- .element: class="fragment" data-fragment-index="1" -->
+- AWS S3 <!-- .element: class="fragment" data-fragment-index="2" -->
+- Firebase Hosting <!-- .element: class="fragment" data-fragment-index="3" -->
+- Auth0 webtask.io <!-- .element: class="fragment" data-fragment-index="4" -->
+- Github Gists <!-- .element: class="fragment" data-fragment-index="5" -->
+- Contentful <!-- .element: class="fragment" data-fragment-index="6" -->
+- WordPress <!-- .element: class="fragment" data-fragment-index="7" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Demo
+
+> Deploying webtasks to webtask.io and static files to Github Pages.
+
+  </script>
+</section>
+
+</section>
+
+  <section>
+  
+    <section data-markdown>
+  <script type="text/template">
+    # Build and Deployment
+
+- Task Runner <!-- .element: class="fragment" data-fragment-index="1" -->
+- Build System <!-- .element: class="fragment" data-fragment-index="2" -->
+- Continuous Integration <!-- .element: class="fragment" data-fragment-index="3" -->
+- Continuous Deployment <!-- .element: class="fragment" data-fragment-index="4" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Examples
+
+- Grunt <!-- .element: class="fragment" data-fragment-index="1" -->
+- Gulp <!-- .element: class="fragment" data-fragment-index="2" -->
+- Assemble <!-- .element: class="fragment" data-fragment-index="3" -->
+- Travis-CI <!-- .element: class="fragment" data-fragment-index="4" -->
+- Codeship <!-- .element: class="fragment" data-fragment-index="5" -->
+
+  </script>
+</section>
+
+    <section data-markdown>
+  <script type="text/template">
+    # Demo
+
+> Building and deployment to Github Pages with Travis-CI
+
+  </script>
+</section>
+
+</section>
+
+  <section data-markdown>
+  <script type="text/template">
+    # Alternatives
+
+<ul>
+  <li>
+    <span>Task Runners: </span><!-- .element: class="fragment" data-fragment-index="1" -->
+    <span>Assemble</span><!-- .element: class="fragment" data-fragment-index="2" -->
+    <span>/ Grunt</span><!-- .element: class="fragment" data-fragment-index="3" -->
+    <span>/ Gulp</span><!-- .element: class="fragment" data-fragment-index="4" -->
+  </li><!-- .element: class="fragment" data-fragment-index="1" -->
+  <li>
+    <span>Data Hosting: </span><!-- .element: class="fragment" data-fragment-index="5" -->
+    <span>Firebase</span><!-- .element: class="fragment" data-fragment-index="6" -->
+    <span>/ AWS RDS</span><!-- .element: class="fragment" data-fragment-index="7" -->
+    <span>/ Compose</span><!-- .element: class="fragment" data-fragment-index="8" -->
+  </li><!-- .element: class="fragment" data-fragment-index="5" -->
+  <li>
+    <span>Site Hosting: </span><!-- .element: class="fragment" data-fragment-index="9" -->
+    <span>Github Pages</span><!-- .element: class="fragment" data-fragment-index="10" -->
+    <span>/ Firebase Hosting</span><!-- .element: class="fragment" data-fragment-index="11" -->
+    <span>/ AWS S3</span><!-- .element: class="fragment" data-fragment-index="12" -->
+  </li><!-- .element: class="fragment" data-fragment-index="9" -->
+  <li>
+    <span>Functions (FaaS): </span><!-- .element: class="fragment" data-fragment-index="13" -->
+    <span>AWS Lambda</span><!-- .element: class="fragment" data-fragment-index="14" -->
+    <span>/ Auth0 Webtasks</span><!-- .element: class="fragment" data-fragment-index="15" -->
+    <span>/ Google Cloud Functions</span><!-- .element: class="fragment" data-fragment-index="16" -->
+  </li><!-- .element: class="fragment" data-fragment-index="13" -->
+  <li>
+    <span>Roll Your Own: </span><!-- .element: class="fragment" data-fragment-index="17" -->
+    <span>AWS</span><!-- .element: class="fragment" data-fragment-index="18" -->
+    <span>/ Digital Ocean</span><!-- .element: class="fragment" data-fragment-index="19" -->
+    <span>/ Google Compute Engine</span><!-- .element: class="fragment" data-fragment-index="20" -->
+    <span>/ Azure</span><!-- .element: class="fragment" data-fragment-index="21" -->
+    <span>/ Docker</span><!-- .element: class="fragment" data-fragment-index="22" -->
+  </li><!-- .element: class="fragment" data-fragment-index="17" -->
+</ul>
+
+  </script>
+</section>
+
+  <section data-markdown>
+  <script type="text/template">
+    # Questions?
+
+  </script>
+</section>
+
+
+    
+    <div class="footer">
+      <div class="logo"><a href="https://github.com/doowb"><img src="img/github.png" width="16px"> @doowb </a></div>
+      <div class="logo"><a href="https://twitter.com/doowb"><img src="img/twitter.svg" width="16px"> @doowb </a></div>
+    </div>
+  </div>
+</div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'js/plugin/markdown/marked.js' },
+          { src: 'js/plugin/markdown/markdown.js' },
+          { src: 'js/plugin/notes/notes.js', async: true },
+          { src: 'js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
