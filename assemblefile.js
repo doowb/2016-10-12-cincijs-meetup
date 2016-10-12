@@ -31,6 +31,7 @@ app.task('load', function(cb) {
   app.slides('src/templates/slides/*.hbs');
   app.pages('src/templates/*.hbs');
   app.data('src/data/*.{json,yml}');
+  app.data('package.json');
   cb();
 });
 
