@@ -64,6 +64,10 @@ app.task('copy-plugin', function() {
   return app.copy('node_modules/reveal.js/plugin/**/*', '_gh_pages/js/plugin');
 });
 
+app.task('clean', function(cb) {
+  del('./_gh_pages', {force: true}, cb);
+});
+
 app.task('cleanPublish', function(cb) {
   del('./.publish', {force: true}, cb);
 });
