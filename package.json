@@ -21,9 +21,27 @@
     "test": "mocha"
   },
   "keywords": [
+    "apis",
+    "app",
+    "application",
+    "aws",
     "cincijs",
     "cincijs-meetup",
-    "meetup"
+    "firebase",
+    "github",
+    "github-pages",
+    "javascript",
+    "markdown",
+    "markup",
+    "meetup",
+    "pages",
+    "serverless",
+    "slides",
+    "talk",
+    "web",
+    "webtask",
+    "webtask-io",
+    "webtask.io"
   ],
   "devDependencies": {
     "assemble": "^0.17.1",
